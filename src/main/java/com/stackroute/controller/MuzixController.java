@@ -55,6 +55,13 @@ public class MuzixController {
         return "Track Updated";
     }
 
+    @GetMapping("/muzix/name/{name}")
+    public ResponseEntity<?> getByName(@PathVariable String name){
+        return new ResponseEntity<Muzix>(muzixService.getByName(name),HttpStatus.OK);
+
+    }
+
+
 
 
 }

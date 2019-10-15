@@ -42,6 +42,10 @@ public class MuzixServiceImpl implements MuzixService {
         muzixRepository.save(muzix);
         return true;
     }
+    @Override
+    public Muzix getByName(String name){
+        return muzixRepository.findByTitle(name);
+    }
 
 
 }
