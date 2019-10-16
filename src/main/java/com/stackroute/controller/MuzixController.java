@@ -21,15 +21,10 @@ public class MuzixController {
     }
 
     @PostMapping("/muzix")
-    public ResponseEntity<?> saveNewMuzix(@RequestBody Muzix muzix){
+    public ResponseEntity<?> saveNewMuzix(@RequestBody Muzix muzix) throws TrackAlreadyExistsException{
         ResponseEntity responseEntity;
-        try{
-            muzixService.saveNewMuzix(muzix);
-            responseEntity=new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
-        } catch (TrackAlreadyExistsException ex){
-            responseEntity=new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
-            ex.printStackTrace();
-        }
+        muzixService.saveNewMuzix(muzix);
+        responseEntity=new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
         return responseEntity;
     }
     @GetMapping("/muzix")
