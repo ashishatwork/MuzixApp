@@ -3,9 +3,8 @@ package com.stackroute.controller;
 import com.stackroute.domain.Muzix;
 import com.stackroute.exceptions.TrackAlreadyExistsException;
 import com.stackroute.exceptions.TrackNotFoundException;
-import com.stackroute.repository.MuzixRepository;
 import com.stackroute.service.MuzixService;
-import com.stackroute.service.MuzixServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +14,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1")
-@Qualifier("MuzixServiceImpl")
 public class MuzixController {
+
+    @Autowired
+    @Qualifier("trackDummyServiceImpl")
 
     private MuzixService muzixService;
 
-    public MuzixController(MuzixService muzixService) {
-        this.muzixService = muzixService;
-    }
+//    public MuzixController(MuzixService muzixService) {
+//        this.muzixService = muzixService;
+//    }
 
     @PostMapping("/muzix")
     public ResponseEntity<?> saveNewMuzix(@RequestBody Muzix muzix) throws TrackAlreadyExistsException{
