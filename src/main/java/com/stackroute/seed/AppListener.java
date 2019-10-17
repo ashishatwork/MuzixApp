@@ -1,6 +1,7 @@
 package com.stackroute.seed;
 
 import com.stackroute.domain.Muzix;
+import com.stackroute.exceptions.TrackAlreadyExistsException;
 import com.stackroute.repository.MuzixRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
