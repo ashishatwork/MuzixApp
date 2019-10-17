@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Primary
+//@Primary
 public class MuzixServiceImpl implements MuzixService {
     MuzixRepository muzixRepository;
     @Autowired

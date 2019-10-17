@@ -17,7 +17,8 @@ import java.util.List;
 @RequestMapping(value = "api/v1")
 @Qualifier("MuzixServiceImpl")
 public class MuzixController {
-   private MuzixService muzixService;
+
+    private MuzixService muzixService;
 
     public MuzixController(MuzixService muzixService) {
         this.muzixService = muzixService;
