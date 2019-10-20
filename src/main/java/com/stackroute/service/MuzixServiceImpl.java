@@ -12,14 +12,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-//@Primary
+@Primary
 public class MuzixServiceImpl implements MuzixService {
 
     private MuzixRepository muzixRepository;
-    @Autowired
-    public MuzixServiceImpl(MuzixRepository muzixRepository) {
-        this.muzixRepository = muzixRepository;
-    }
+ @Autowired
+  public MuzixServiceImpl(MuzixRepository muzixRepository) {
+       this.muzixRepository = muzixRepository;
+   }
 
 
     @Override
@@ -67,10 +67,10 @@ public class MuzixServiceImpl implements MuzixService {
         muzixRepository.save(muzix);
         return true;
     }
-    @Override
-    public Muzix getByName(String name){
-        return muzixRepository.findByTitle(name);
+//    @Override
+//    public Muzix getByName(String name){
+//        return muzixRepository.findByTitle(name);
     }
 
 
-}
+

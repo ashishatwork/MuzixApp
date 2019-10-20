@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.Optional;
 @Service
 
-//@Primary
-public class TrackDummyServiceImpl implements MuzixService{
+public class TrackDummyServiceImpl implements MuzixService {
     private MuzixRepository muzixRepository;
+
     @Autowired
     public TrackDummyServiceImpl(MuzixRepository muzixRepository) {
         this.muzixRepository = muzixRepository;
@@ -25,11 +25,10 @@ public class TrackDummyServiceImpl implements MuzixService{
 
     @Override
     public Muzix saveNewMuzix(Muzix muzix) throws TrackAlreadyExistsException {
-        if(muzixRepository.existsById(muzix.getId()))
-        {
+        if (muzixRepository.existsById(muzix.getId())) {
             throw new TrackAlreadyExistsException("Track already exists!!!");
         }
-        Muzix saveNewMuzix=muzixRepository.save(muzix);
+        Muzix saveNewMuzix = muzixRepository.save(muzix);
         return saveNewMuzix;
     }
 
@@ -41,37 +40,37 @@ public class TrackDummyServiceImpl implements MuzixService{
 
     @Override
     public Muzix getById(int id) throws TrackNotFoundException {
-        Optional<Muzix> trackId= muzixRepository.findById(id);
-        if(trackId.isEmpty()){
+        Optional<Muzix> trackId = muzixRepository.findById(id);
+        if (trackId.isEmpty()) {
             throw new TrackNotFoundException("Track not Found!!! thrown from dummy");
         }
         return trackId.get();
     }
 
     @Override
-    public void deleteById(int id) throws TrackNotFoundException{
-        Optional<Muzix> trackId=muzixRepository.findById(id);
-        if(trackId.isEmpty())
-        {
+    public void deleteById(int id) throws TrackNotFoundException {
+        Optional<Muzix> trackId = muzixRepository.findById(id);
+        if (trackId.isEmpty()) {
             throw new TrackNotFoundException("Track not found!!! thrown form dummy");
         }
         muzixRepository.deleteById(id);
     }
 
     @Override
-    public boolean updateById(Muzix muzix, int id) throws TrackNotFoundException{
-        Optional<Muzix> trackId=muzixRepository.findById(id);
-        if(trackId.isEmpty()){
+    public boolean updateById(Muzix muzix, int id) throws TrackNotFoundException {
+        Optional<Muzix> trackId = muzixRepository.findById(id);
+        if (trackId.isEmpty()) {
             throw new TrackNotFoundException("Track not found!!!  thrown from dummy");
         }
         muzix.setId(id);
         muzixRepository.save(muzix);
         return true;
     }
-    @Override
-    public Muzix getByName(String name){
-        return muzixRepository.findByTitle(name);
-    }
+
+//    @Override
+//    public Muzix getByName(String name){
+//        return muzixRepository.findByTitle(name);
+//    }
 
 
 }

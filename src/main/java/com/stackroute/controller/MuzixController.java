@@ -16,14 +16,13 @@ import java.util.List;
 @RequestMapping(value = "api/v1")
 public class MuzixController {
 
-    @Autowired
-    @Qualifier("trackDummyServiceImpl")
+
 
     private MuzixService muzixService;
-
-//    public MuzixController(MuzixService muzixService) {
-//        this.muzixService = muzixService;
-//    }
+    @Autowired
+   public MuzixController(MuzixService muzixService) {
+       this.muzixService = muzixService;
+    }
 
     @PostMapping("/muzix")
     public ResponseEntity<?> saveNewMuzix(@RequestBody Muzix muzix) throws TrackAlreadyExistsException{
@@ -58,11 +57,11 @@ public class MuzixController {
         return "Track Updated";
     }
 
-    @GetMapping("/muzix/name/{name}")
-    public ResponseEntity<?> getByName(@PathVariable String name){
-        return new ResponseEntity<Muzix>(muzixService.getByName(name),HttpStatus.OK);
-
-    }
+//    @GetMapping("/muzix/name/{name}")
+//    public ResponseEntity<?> getByName(@PathVariable String name){
+//        return new ResponseEntity<Muzix>(muzixService.getByName(name),HttpStatus.OK);
+//
+//    }
 
 
 

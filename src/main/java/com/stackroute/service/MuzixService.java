@@ -18,7 +18,7 @@ public interface MuzixService {
 
     public boolean updateById(Muzix muzix, int id) throws TrackNotFoundException;
 
-    public Muzix getByName(String name);
+//    public Muzix getByName(String name);
 
 
 }
